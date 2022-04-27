@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #navbar{
+    display: flex;
+    justify-content: space-around;
+    background-color: blue;
+    /* width: 80%; */
+    margin: auto;
+    height: 60px;
+    align-items: center;
+
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+
+}
+#container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+#container>div{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 20px;
+}
+img{
+    border-radius: 15%;
+    
+}
+        
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="Backend.html">Backend</a></div>
+        <div><a href="Frontend.html">Fronted</a></div>
+    </div>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+
+    var arr=JSON.parse(localStorage.getItem("investorData"));
+    console.log(arr)
+
+    arr.map(function (elem) {
+    var box = document.createElement("div");
+    // box.style.width="20%"
+    // box.style.border="1px solid red"
+    box.style.marginTop="20px"
+
+    var img = document.createElement("img");
+    img.src = elem.investorImg;
+    img.style.width="330px"
+    img.style.height="290px"
+    img.style.marginLeft="30px"
+    img.style.cursor="pointer"
+    img.style.marginRight="30px"
+
+    var name = document.createElement("h3");
+    name.textContent = elem.investorName;
+    name.style.textAlign="center"
+    name.style.marginTop="-5px"
+    
+    var role = document.createElement("p");
+    role.textContent = elem.investorRole;
+    role.style.textAlign="center"
+    role.style.marginTop="-20px"
+
+    var imglogo = document.createElement("img");
+    imglogo.src = elem.investorCompanyLogo;
+    // imglogo.style.height="70px"
+    imglogo.style.width="100px"
+    imglogo.style.marginLeft="35%"
+    imglogo.style.marginTop="-10px"
+
+
+
+
+
+    box.append(img,name,role,imglogo);
+
+    document.querySelector("#container").append(box);
+  });
+
+
+
+
+
+
+
+
+</script>
+
+
